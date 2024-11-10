@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+  Name: Saul Juaerz
+  Date: 11/10/2024
+  CSC 372-01
+
+  This is the index page for a jokebook. The jokebook allows users to view jokes from various
+  categories, search for jokes by category, and add new jokes to the book. The users are also able
+  to add a category, as well as three auto-fetched jokes from the JokeAPI if it does not already 
+  belong to the relational database. This was demonstrated by the addition of the "programming" 
+  category.
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jokebook</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <h1>Welcome To My Jokebook</h1>
+    <p>Enjoy an assortment of jokes from various categories. If you think you cooked up a real
+        zinger, add it to the book!</p>
+
+    <!-- Display random joke -->
+    <section id="random-joke-section">
+        <h2>Random Joke</h2>
+        <p id="random-joke">Loading...</p>
+        <button onclick="fetchRandomJoke()">Get Another Random Joke</button>
+    </section>
+
+    <!-- Category List / Jokes Display Section -->
+    <section id="category-section">
+        <h2 id="category-section-title" onclick="toggleCategoryList()">Categories</h2>
+        <div id="category-list-container" style="display: none;">
+            <button id="category-back-button" onclick="hideCategories()" style="display: none;">← Back</button>
+            <ul id="category-list"></ul>
+        </div>
+    </section>
+
+    <!-- Search by Category -->
+    <section id="search-section">
+        <h2>Search Jokes by Category</h2>
+        <input type="text" id="category-search-input" placeholder="Enter category name...">
+        <button onclick="searchJokesByCategory()">Search</button>
+    </section>
+
+    <!-- Add New Joke Form -->
+    <section id="add-joke-section">
+        <h2>Add a New Joke</h2>
+        <form id="add-joke-form" onsubmit="addNewJoke(event)">
+            <label for="category">Category:</label>
+            <input type="text" id="joke-category" required><br>
+            <label for="setup">Setup:</label>
+            <input type="text" id="joke-setup" required><br>
+            <label for="delivery">Delivery:</label>
+            <input type="text" id="joke-delivery" required><br>
+            <button type="submit">Add Joke</button>
+        </form>
+    </section>
+
+    <script src="index.js"></script>
+</body>
+</html>
